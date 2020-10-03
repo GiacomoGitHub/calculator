@@ -34,7 +34,11 @@ body {
     background-color: #272627;
 }
 
-.button:hover {
+.buttons:hover {
+    cursor: pointer;
+}
+
+.button:active {
     background-color: #504e50;
     cursor: pointer;
 }
@@ -44,13 +48,18 @@ body {
     color: black;
 }
 
-.yellowButton:hover {
+.yellowButton:active {
     background-color: rgb(180, 172, 50);
     cursor: pointer;
 }
 
 #clear {
     padding-top: 10%;
+    background-color: rgb(216, 62, 62);
+}
+
+#clear:active {
+    background-color: rgb(167, 73, 73);
 }
 
 #percentage {
@@ -109,8 +118,9 @@ body {
 }
 
 #equal {
-    padding-top: 35%;
+    padding-top: 45%;
     text-align: center;
+    font-size: 160%;
     border-radius: 0 0 10px 0;
     grid-row: span 2;
 }
