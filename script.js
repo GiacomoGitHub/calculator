@@ -17,6 +17,7 @@ let operator = "";
 let result = 0;
 
 
+
 // LISTEN TO NUMBER CLICKS AND UPDATE DISPLAY
 document.getElementById("one").addEventListener("click", function () { if (inputNumber.length < 7) { inputNumber += 1; updateDisplay() } });
 document.getElementById("two").addEventListener("click", function () { if (inputNumber.length < 7) { inputNumber += 2; updateDisplay() } });
@@ -27,7 +28,7 @@ document.getElementById("six").addEventListener("click", function () { if (input
 document.getElementById("seven").addEventListener("click", function () { if (inputNumber.length < 7) { inputNumber += 7; updateDisplay() } });
 document.getElementById("eight").addEventListener("click", function () { if (inputNumber.length < 7) { inputNumber += 8; updateDisplay() } });
 document.getElementById("nine").addEventListener("click", function () { if (inputNumber.length < 7) { inputNumber += 9; updateDisplay() } });
-document.getElementById("zero").addEventListener("click", function () { if (inputNumber === "") { inputNumber = 0; } else { if (inputNumber.length < 7) inputNumber += "0"; updateDisplay() } });
+document.getElementById("zero").addEventListener("click", function () { if (inputNumber === "") { inputNumber = "0"; } else { if (inputNumber.length < 7) inputNumber += "0"; updateDisplay() } });
 document.getElementById("comma").addEventListener("click", function () { if (inputNumber.indexOf('.') === -1) { inputNumber += "."; updateDisplay() } });
 
 
@@ -42,7 +43,7 @@ document.getElementById("add").addEventListener("click", function () { operator 
 
 
 // CLEAR NUMBER AND OPERATOR
-document.getElementById("clear").addEventListener("click", function () { inputNumber = ""; storedNumber = ""; operator = ""; updateDisplay()});
+document.getElementById("clear").addEventListener("click", function () { inputNumber = ""; storedNumber = ""; operator = ""; result = 0; updateDisplay()});
 
 
 
@@ -76,7 +77,7 @@ function operate() {
         multiply();
     } else if (operator === '/') {
         if (inputNumber === 0) {
-            document.getElementById("display").textContent = "ERROR";
+            document.getElementById("display").textContent = "NOPE";
             inputNumber = "";
             storedNumber = "";
             operator = "";
@@ -95,7 +96,7 @@ function operate() {
 function add() {
     result = Number(storedNumber) + Number(inputNumber);
     if (result.toString().length > 10) {
-        document.getElementById("display").textContent = "ERROR";
+        document.getElementById("display").textContent = "TOO BIG LOL";
         inputNumber = "";
         storedNumber = "";
         operator = "";
@@ -110,7 +111,7 @@ function add() {
 function subtract() {
     result = (storedNumber -= inputNumber);
     if (result.toString().length > 10) {
-        document.getElementById("display").textContent = "ERROR";
+        document.getElementById("display").textContent = "TOO BIG LOL";
         inputNumber = "";
         storedNumber = "";
         operator = "";
@@ -125,7 +126,7 @@ function subtract() {
 function multiply() {
     result = (storedNumber *= inputNumber);
     if (result.toString().length > 10) {
-        document.getElementById("display").textContent = "ERROR";
+        document.getElementById("display").textContent = "TOO BIG LOL";
         inputNumber = "";
         storedNumber = "";
         operator = "";
@@ -140,7 +141,7 @@ function multiply() {
 function divide() {
     result = (storedNumber /= inputNumber);
     if (result.toString().length > 10) {
-        document.getElementById("display").textContent = "ERROR";
+        document.getElementById("display").textContent = "TOO BIG LOL";
         inputNumber = "";
         storedNumber = "";
         operator = "";
@@ -160,8 +161,129 @@ function percentage() {
 }
 
 
+
+
+// ----------------------------------------------------- //
+
+
+
+
+
+// (EXPERIMENTAL) RUNS OPERATIONS
+// function add() {
+//     result = Number(storedNumber) + Number(inputNumber);
+//     if (result.toString().length > 10) {
+//         document.getElementById("display").textContent = "TOO BIG LOL";
+//         inputNumber = "";
+//         storedNumber = "";
+//         operator = "";
+//         result = 0;
+//     } else {
+//         document.getElementById("display").textContent = result;
+//         operator = "";
+//         inputNumber = "";
+//         storedNumber = result;
+//     }
+// }
+
+// function subtract() {
+//     result = (storedNumber -= inputNumber);
+//     if (result.toString().length > 10) {
+//         document.getElementById("display").textContent = "TOO BIG LOL";
+//         inputNumber = "";
+//         storedNumber = "";
+//         operator = "";
+//         result = 0;
+//     } else {
+//         document.getElementById("display").textContent = result;
+//         operator = "";
+//         inputNumber = "";
+//         storedNumber = result;
+//     }
+// }
+
+// function multiply() {
+//     if (inputNumber != "") {
+//         result = (storedNumber *= inputNumber);
+//     } else if (inputNumber === "") {
+//         result = (storedNumber *= 1)
+//     }
+//     if (result.toString().length > 10) {
+//         document.getElementById("display").textContent = "TOO BIG LOL";
+//         inputNumber = "";
+//         storedNumber = "";
+//         operator = "";
+//         result = 0;
+//     } else {
+//         document.getElementById("display").textContent = result;
+//         operator = "";
+//         inputNumber = "";
+//         storedNumber = result;
+//     }
+// }
+
+// function divide() {
+//     result = (storedNumber /= inputNumber);
+//     if (result.toString().length > 10) {
+//         document.getElementById("display").textContent = "TOO BIG LOL";
+//         inputNumber = "";
+//         storedNumber = "";
+//         operator = "";
+//         result = 0;
+//     } else {
+//         document.getElementById("display").textContent = result;
+//         operator = "";
+//         inputNumber = "";
+//         storedNumber = result;
+//     }
+// }
+
+// function percentage() {
+//     result = Number((inputNumber / 100) * storedNumber);
+//     document.getElementById("display").textContent = Number(result.toString().substring(0, 3));
+//     operator = "";
+//     inputNumber = "";
+//     storedNumber = result;
+// }
+
+
+
+// // (EXPERIMENTAL) SHOWS RESULT WHEN CLICK ON =
+// document.getElementById("equal").addEventListener("click", function () { 
+//     document.getElementById("display").textContent = result; });
+
+
+
+// // (EXPERIMENTAL) LISTEN TO OPERATOR CLICK AND RUNS OPERATION
+// document.getElementById("add").addEventListener("click", function () { 
+//     if (storedNumber === "") { operator = "+"; storedNumber = inputNumber; inputNumber = ""; 
+// } else if (storedNumber != "") { operator = "+"; result = storedNumber = Number(storedNumber) + Number(inputNumber); inputNumber = ""; document.getElementById("display").textContent = storedNumber;}
+// });
+// document.getElementById("subtract").addEventListener("click", function () { 
+//     if (storedNumber === "") { operator = "-"; storedNumber = inputNumber; inputNumber = ""; 
+// } else if (storedNumber != "") { operator = "-"; storedNumber = Number(storedNumber) - Number(inputNumber); inputNumber = ""; document.getElementById("display").textContent = storedNumber;}
+// });
+// document.getElementById("divide").addEventListener("click", function () { 
+//     if (storedNumber === "") { operator = "/"; storedNumber = inputNumber; inputNumber = ""; 
+// } else if (storedNumber != "") { operator = "/"; storedNumber = Number(storedNumber) / Number(inputNumber); inputNumber = ""; document.getElementById("display").textContent = storedNumber;}
+// });
+// document.getElementById("multiply").addEventListener("click", function () { 
+//     if (storedNumber === "") { operator = "*"; storedNumber = inputNumber; inputNumber = ""; 
+// } else if (storedNumber != "") { operator = "*"; storedNumber = Number(storedNumber) * Number(inputNumber); inputNumber = ""; document.getElementById("display").textContent = storedNumber;}
+// });
+// document.getElementById("percentage").addEventListener("click", function () { 
+//     if (storedNumber === "") { operator = "%"; storedNumber = inputNumber; inputNumber = ""; 
+// } else if (storedNumber != "") { operator = "%"; storedNumber = Number((inputNumber / 100) * Number(storedNumber)); inputNumber = ""; document.getElementById("display").textContent = storedNumber;}
+// });
+
+
+
+
+
+
+
+
 // BUGS
-// addition
 // several operations
 
 
@@ -171,4 +293,5 @@ function percentage() {
 // rounding length of input numbers
 // several commas
 // rounding result length
+// addition
 
